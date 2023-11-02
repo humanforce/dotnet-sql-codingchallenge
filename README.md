@@ -66,6 +66,7 @@ Create a simple angular SPA front-end which shows the sales of all the cars, whe
 - Unit Tests for both backend and frontend
 - Use of Dependency Injection
 - Clean code which is easier to read and best practices followed
+- It is expected to be completed in a week and should not take more than 4 hours in one stretch.
 
 ## Bonus Objectives
 - 80% or more unit tests coverage for both frontend and backend
