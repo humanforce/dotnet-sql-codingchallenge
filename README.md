@@ -70,4 +70,4 @@ Create a simple angular SPA front-end which shows the sales of all the cars, whe
 
 ## Bonus Objectives
 - 80% or more unit tests coverage for both frontend and backend
-- Authentication in WebAPI (preferably JSON) - it's ok to hard-code to show the concept of authentication
+- Authentication in WebAPI (preferably JWT) - it's ok to hard-code to show the concept of authentication
