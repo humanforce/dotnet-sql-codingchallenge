@@ -69,4 +69,4 @@ Create a simple angular SPA front-end which shows the sales of all the cars, whe
 - It is expected to be completed in a week and should not take more than 4 hours in one stretch.
 
 ## Bonus Objectives
-- Authentication in WebAPI (preferably JWT) - it's ok to hard-code to show the concept of authentication
+- Authentication (preferably JWT) - it's ok to hard-code to show the concept of authentication
