@@ -77,7 +77,7 @@ GET _/sales?startDate=yyyymmdd&endDate=yyyymmdd_
   year
 }]
 ```
-e.g. **GET _/sales?startDate=20231231&endDate=20230701** - this will return all sales from 01-July-2023 to 31-Dec-2023
+e.g. **GET _/sales?startDate=20230701&endDate=20231231** - this will return all sales from 01-July-2023 to 31-Dec-2023
 
 ## UI
 Create a simple angular SPA front-end which shows the sales of all the cars, where start date and end date can be user-inputs.
