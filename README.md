@@ -57,7 +57,7 @@ PATCH _/cars/:carId_
 }
 ```
 
-GET _/cars/:carId_
+DEL _/cars/:carId_ - deletes this car from the db
 
 POST _/sales_
 ```
