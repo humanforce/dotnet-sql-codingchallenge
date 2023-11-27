@@ -37,6 +37,28 @@ GET _/cars_
 }]
 ```
 
+GET _/cars/:carId_
+```
+{
+  id,
+  name,
+  colour,
+  price
+}
+```
+
+PATCH _/cars/:carId_
+```
+{
+  id,
+  name,
+  colour,
+  price
+}
+```
+
+GET _/cars/:carId_
+
 POST _/sales_
 ```
 {
@@ -45,7 +67,7 @@ POST _/sales_
 }
 ```
 
-GET _/sales?month=5&year=2023_
+GET _/sales?startDate=yyyymmdd&endDate=yyyymmdd_
 ```
 [{  
   carName,
@@ -55,9 +77,10 @@ GET _/sales?month=5&year=2023_
   year
 }]
 ```
+e.g. **GET _/sales?startDate=20231231&endDate=20230701** - this will return all sales from 01-July-2023 to 31-Dec-2023
 
 ## UI
-Create a simple angular SPA front-end which shows the sales of all the cars, where month and year can be user-inputs. It will be bonus to extend this to be able to select month range for the report (e.g. July-2022 to Dec-2023).
+Create a simple angular SPA front-end which shows the sales of all the cars, where start date and end date can be user-inputs.
 - The styling in UI is not important, just a simple table will be sufficient.
 
 # Objectives:
