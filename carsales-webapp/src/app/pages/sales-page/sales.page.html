@@ -1,1 +1,28 @@
 <h2>Sales Page</h2>
+
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <input type="date" formControlName="startDate" aria-label="startDate" name="startDate">
+    <input type="date" formControlName="endDate" aria-label="endDate" name="endDate">
+    <button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Car Name</th>
+            <th>Car Colour</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sale of sales">
+            <td>{{sale.carName}}</td>
+            <td>{{sale.carColour}}</td>
+            <td>{{sale.month}}</td>
+            <td>{{sale.year}}</td>
+            <td>{{sale.quantity}}</td>
+        </tr>
+    </tbody>
+</table>
