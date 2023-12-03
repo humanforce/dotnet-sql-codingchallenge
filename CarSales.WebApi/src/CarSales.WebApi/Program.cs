@@ -22,6 +22,7 @@ public class Program
         builder.Services.AddDbContext<CarSalesDbContext>(t => t.UseSqlServer(connectionString));
 
         builder.Services.AddTransient<ICarsService, CarsService>();
+        builder.Services.AddTransient<ISalesService, SalesService>();
 
         var app = builder.Build();
 
