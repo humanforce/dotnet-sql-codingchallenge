@@ -1,4 +1,7 @@
 
+using CarSales.Common.Database;
+using Microsoft.EntityFrameworkCore;
+
 namespace CarSales.WebApi;
 
 public class Program
@@ -13,6 +16,9 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        string? connectionString = builder.Configuration.GetConnectionString("Database");
+        builder.Services.AddDbContext<CarSalesDbContext>(t => t.UseSqlServer(connectionString));
 
         var app = builder.Build();
 
