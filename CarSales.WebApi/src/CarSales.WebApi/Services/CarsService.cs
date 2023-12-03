@@ -5,7 +5,7 @@ using CarSales.WebApi.Exceptions;
 
 namespace CarSales.WebApi.Services
 {
-    public class CarsService
+    public class CarsService : ICarsService
     {
         private readonly CarSalesDbContext _dbContext;
 
