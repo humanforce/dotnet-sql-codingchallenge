@@ -26,6 +26,9 @@ public class Program
 
         var app = builder.Build();
 
+        var allowedOrigins = app.Configuration.GetSection("AppSettings:AllowedOrigins").Get<string[]>();
+        app.UseCors(t => t.WithOrigins(allowedOrigins).AllowAnyMethod().AllowAnyHeader());
+
         // Configure the HTTP request pipeline.
         app.UseSwagger();
         app.UseSwaggerUI();
