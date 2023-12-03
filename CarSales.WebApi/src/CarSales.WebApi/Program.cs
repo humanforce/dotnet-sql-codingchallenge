@@ -1,5 +1,6 @@
 
 using CarSales.Common.Database;
+using CarSales.WebApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarSales.WebApi;
@@ -19,6 +20,8 @@ public class Program
 
         string? connectionString = builder.Configuration.GetConnectionString("Database");
         builder.Services.AddDbContext<CarSalesDbContext>(t => t.UseSqlServer(connectionString));
+
+        builder.Services.AddTransient<ICarsService, CarsService>();
 
         var app = builder.Build();
 
