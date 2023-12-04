@@ -11,7 +11,7 @@ namespace CarSales.WebApi.Test.Fixtures
 
         public CarSalesDbContextFixture()
         {
-            _options = new DbContextOptionsBuilder<CarSalesDbContext>().UseInMemoryDatabase(databaseName: "CarSales")
+            _options = new DbContextOptionsBuilder<CarSalesDbContext>().UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                                     .ConfigureWarnings(w => w.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                                     .Options;
 

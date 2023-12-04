@@ -2,30 +2,29 @@
 using CarSales.WebApi.Controllers;
 using CarSales.WebApi.Exceptions;
 using CarSales.WebApi.Services;
+using CarSales.WebApi.Test.Fixtures;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 
 namespace CarSales.WebApi.Test
 {
-    public class CarsControllerTest
+    public class CarsControllerTest : IClassFixture<CarSalesDbContextFixture>
     {
+        private readonly CarSalesDbContextFixture _fixture;
+        public CarsControllerTest(CarSalesDbContextFixture fixture)
+        {
+            _fixture = fixture;
+        }
         [Fact]
         public async Task Fetch_ReturnsOkObjectResult()
         {
-            var data = new List<Car>().AsQueryable();
-            var mock = new Mock<ICarsService>();
-            var mockCarlist = new Mock<IQueryable<Car>>();
-
-            mockCarlist.As<IQueryable<Car>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockCarlist.As<IQueryable<Car>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockCarlist.As<IQueryable<Car>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockCarlist.As<IQueryable<Car>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
-
-            mock.SetupGet(t => t.Cars).Returns(mockCarlist.Object);
-
-            var controller = new CarsController(mock.Object);
-            var result = await controller.Fetch();
-            Assert.IsType<OkObjectResult>(result);
+            using(var context = _fixture.CreateContext())
+            {
+                var controller = new CarsController(new CarsService(context));
+                var result = await controller.Fetch();
+                Assert.IsType<OkObjectResult>(result);
+            }
         }
 
         [Fact]
