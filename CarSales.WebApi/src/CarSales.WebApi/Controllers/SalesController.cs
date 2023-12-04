@@ -1,6 +1,7 @@
 ﻿using CarSales.Common.Database;
 using CarSales.WebApi.Models;
 using CarSales.WebApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Globalization;
@@ -61,6 +62,7 @@ namespace CarSales.WebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "write:sales")]
         [SwaggerOperation("Create sale record")]
         [SwaggerResponse(201, Type = typeof(Sale), Description = "Success")]
         [SwaggerResponse(400, Description = "Validation errors")]

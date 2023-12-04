@@ -5,6 +5,7 @@ using CarSales.WebApi.Models;
 using CarSales.WebApi.Services;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarSales.WebApi.Controllers
 {
@@ -23,6 +24,7 @@ namespace CarSales.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Policy = "read:cars")]
         [SwaggerResponse(200, Type = typeof(IEnumerable<Car>), Description = "Success")]
         public async Task<IActionResult> Fetch()
         {
@@ -35,6 +37,7 @@ namespace CarSales.WebApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(Policy = "read:cars")]
         [SwaggerResponse(200, Type = typeof(Car), Description = "Success")]
         [SwaggerResponse(404, Description = "Not found")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
@@ -54,6 +57,7 @@ namespace CarSales.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Policy = "write:cars")]
         [SwaggerResponse(201, Type = typeof(Car), Description = "Successfully created")]
         [SwaggerResponse(400, Description = "Validation errors")]
         public async Task<IActionResult> Create([FromBody] CarCreateDto carDto)
@@ -69,6 +73,7 @@ namespace CarSales.WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
+        [Authorize(Policy = "write:cars")]
         [SwaggerResponse(200, Description = "Successfully updated")]
         [SwaggerResponse(400, Description = "Validation errors")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] CarModifyDto carDto)
@@ -84,6 +89,7 @@ namespace CarSales.WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = "write:cars")]
         [SwaggerResponse(204, Description = "Successfully deleted")]
         [SwaggerResponse(404, Description = "Not found")]
         [SwaggerResponse(409, Description = "Car record has associated sales")]
