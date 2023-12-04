@@ -93,4 +93,4 @@ Create a simple angular SPA front-end which shows the sales of all the cars, whe
 
 ## Bonus Objectives
 - Authentication (preferably JWT) - it's ok to hard-code to show the concept of authentication
-- Usage of Entity Framework and LINQ to connect with the database
+- Usage of Entity Framework (code first) and LINQ to connect with the database
