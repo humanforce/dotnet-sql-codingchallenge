@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { CarSale, ICarSalesClient } from '../../../shared/carsales-api';
+import { Observable, catchError, ignoreElements, of } from 'rxjs';
 
 @Component({
     selector: 'sales-page',
@@ -10,10 +11,17 @@ import { CarSale, ICarSalesClient } from '../../../shared/carsales-api';
 export class SalesPage
 {
     public searchForm: FormGroup;
-    public sales: Array<CarSale> = [];
+    public sales$: Observable<Array<CarSale>|null>;
+    public salesError$: Observable<any>;
 
     constructor(private carSalesClient: ICarSalesClient)
     {
+        this.sales$ = of([]);
+
+        this.salesError$ = this.sales$.pipe(
+            ignoreElements(), catchError((err) => of(err))
+        );
+
         this.searchForm = new FormGroup({
             startDate: new FormControl(),
             endDate: new FormControl()
@@ -26,11 +34,13 @@ export class SalesPage
         console.log(`startDate: ${startDate} | ${typeof(startDate)}`);
         console.log(`endDate: ${endDate} | ${typeof(endDate)}`);
 
-        this.carSalesClient.getSales(
+        this.sales$ = this.carSalesClient.getSales(
             typeof(startDate) === 'string' ? new Date(startDate) : null,
             typeof(endDate) === 'string' ? new Date(endDate) : null
-        ).subscribe((data)=> {
-            this.sales = data;
-        })
+        )
+
+        this.salesError$ = this.sales$.pipe(
+            ignoreElements(), catchError((err) => of(err))
+        );
     }
 }

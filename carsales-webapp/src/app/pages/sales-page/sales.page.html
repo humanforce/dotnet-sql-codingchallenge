@@ -6,23 +6,36 @@
     <button type="submit">Search</button>
 </form>
 
-<table>
-    <thead>
-        <tr>
-            <th>Car Name</th>
-            <th>Car Colour</th>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Quantity</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let sale of sales">
-            <td>{{sale.carName}}</td>
-            <td>{{sale.carColour}}</td>
-            <td>{{sale.month}}</td>
-            <td>{{sale.year}}</td>
-            <td>{{sale.quantity}}</td>
-        </tr>
-    </tbody>
-</table>
+<ng-container *ngIf="{sales: sales$ | async, error: salesError$ | async} as data">
+    <ng-container *ngIf="data.sales; else loading">
+            <table class="sales-data">
+                <thead>
+                    <tr>
+                        <th>Car Name</th>
+                        <th>Car Colour</th>
+                        <th>Month</th>
+                        <th>Year</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sale of data.sales">
+                        <td>{{sale.carName}}</td>
+                        <td>{{sale.carColour}}</td>
+                        <td>{{sale.month}}</td>
+                        <td>{{sale.year}}</td>
+                        <td>{{sale.quantity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="sales-loading" *ngIf="!data.error">
+        Fetching Data ...
+      </div>
+      <div class="sales-error" *ngIf="data.error">
+        Something went wrong (┬┬﹏┬┬)
+      </div>
+    </ng-template>
+</ng-container>
