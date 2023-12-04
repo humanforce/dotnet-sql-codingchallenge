@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSales.Common.Database", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{88254CB2-4B38-42F1-B84A-2CED5CF75090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSales.WebApi.UnitTest", "tests\CarSales.WebApi.UnitTest\CarSales.WebApi.UnitTest.csproj", "{0F7A769B-B649-4A19-943D-6E613AF17DB3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSales.WebApi.Test", "tests\CarSales.WebApi.Test\CarSales.WebApi.Test.csproj", "{0F7A769B-B649-4A19-943D-6E613AF17DB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
