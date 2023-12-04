@@ -1,0 +1,42 @@
+<div class="container text-center">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>SALES</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3 offset-2">
+            <!-- <input type="date" [(ngModel)]="searchDate" class="form-control" id="searchdate"> -->
+            <input type="month" [value]="todayDate" class="form-control" (change)="changedDate($event)">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col">Id</th> -->
+                        <th scope="col">Car Name</th>
+                        <th scope="col">Car Colour</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Month</th>
+                        <th scope="col">Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let c of service.list">
+                        <!-- <td hidden>{{c.id}}</td> -->
+                        <td>{{c.carName}}</td>
+                        <td>{{c.carColour}}</td>
+                        <td>{{c.quantity}}</td>
+                        <td>{{c.month}}</td>
+                        <td>{{c.year}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>

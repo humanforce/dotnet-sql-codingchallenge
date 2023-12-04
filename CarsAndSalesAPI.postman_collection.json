@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "c7c30d73-d26d-4273-97ac-aa3a76f2766f",
+		"name": "CarsAndSalesAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Cars",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNjk4OTk0MDkwLCJleHAiOjE2OTkwODA0OTAsImlhdCI6MTY5ODk5NDA5MH0.0jclcjGx7XHT-uRi-di_QfJWpdS-TWHFOh7dVPyXgT0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44332/api/cars",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44332",
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate JWT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"UserName\": \"admin\",\r\n      \"Password\": \"admin\",\r\n      \"Role\": \"admin\",\r\n      \"Token\": \"2323\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44332/api/user/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44332",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Car",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNjk4OTk0MDkwLCJleHAiOjE2OTkwODA0OTAsImlhdCI6MTY5ODk5NDA5MH0.0jclcjGx7XHT-uRi-di_QfJWpdS-TWHFOh7dVPyXgT0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Name\": \"Honda Yamaha\",\r\n    \"Colour\": \"Black\",\r\n    \"Price\": 25000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44332/api/cars",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44332",
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sales",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNjk4OTk0MDkwLCJleHAiOjE2OTkwODA0OTAsImlhdCI6MTY5ODk5NDA5MH0.0jclcjGx7XHT-uRi-di_QfJWpdS-TWHFOh7dVPyXgT0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CarId\": \"c31c6363-e6c1-49b8-b819-f6ddd3f588f7\",\r\n    \"Date\": \"2023-11-24\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44332/api/sales",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44332",
+					"path": [
+						"api",
+						"sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sales",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNjk4OTk0MDkwLCJleHAiOjE2OTkwODA0OTAsImlhdCI6MTY5ODk5NDA5MH0.0jclcjGx7XHT-uRi-di_QfJWpdS-TWHFOh7dVPyXgT0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44332/api/sales?month=11&year=2023",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44332",
+					"path": [
+						"api",
+						"sales"
+					],
+					"query": [
+						{
+							"key": "month",
+							"value": "11"
+						},
+						{
+							"key": "year",
+							"value": "2023"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
